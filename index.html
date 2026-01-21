@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Souffle du Futur</title>
+  <meta name="description" content="Projet scientifique étudiant – Turbines éoliennes Savonius utilisant le vent des voitures pour produire de l’énergie propre." />
+  <style>
+    :root {
+      --green: #22f3a6;
+      --dark: #020617;
+      --light: #f8fafc;
+      --accent: #38bdf8;
+      --purple: #7c3aed;
+      --cyan: #22d3ee;
+      --gray: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+      background: var(--light);
+      color: #0f172a;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(2,6,23,0.95), rgba(15,23,42,0.95));
+      backdrop-filter: blur(12px);
+      color: white;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(148,163,184,0.15);
+    }
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+    nav a {
+      color: white;
+      margin-left: 1.2rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    nav a:hover { color: var(--green); }
+
+    section {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .hero {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124,58,237,0.25), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(34,211,238,0.25), transparent 40%),
+        linear-gradient(rgba(2,6,23,0.75), rgba(2,6,23,0.95)),
+        url('IMAGE_AUTOROUTE_TURBINE.jpg') center/cover no-repeat;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      font-size: 1.35rem;
+      margin-bottom: 2.5rem;
+      color: #e5e7eb;
+    }
+    .btn {
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      box-shadow: 0 0 0 rgba(34,211,238,0.0);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 20px 50px rgba(124,58,237,0.45);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(34,197,94,0.45);
+    }
+
+    h2 {
+      font-size: 2.6rem;
+      margin-bottom: 1.2rem;
+      color: var(--dark);
+      letter-spacing: -0.8px;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      margin-top: 0.7rem;
+      border-radius: 4px;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--green);
+      margin-top: 0.6rem;
+      border-radius: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+    .card {
+      background: linear-gradient(180deg, #ffffff, #f1f5f9);
+      padding: 2.4rem;
+      border-radius: 28px;
+      box-shadow: 0 30px 60px rgba(2,6,23,0.12);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      border: 1px solid rgba(148,163,184,0.25);
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 40px 80px rgba(124,58,237,0.25);
+    }
+    .card h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.25rem;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card h3 {
+      margin-bottom: 0.6rem;
+      color: var(--green);
+      font-size: 1.2rem;
+    }
+
+    ol {
+      margin-top: 1.5rem;
+      padding-left: 1.2rem;
+    }
+    ol li {
+      margin-bottom: 0.8rem;
+      color: #1e293b;
+    }
+
+    .highlight {
+      background: #ecfeff;
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.2rem;
+      margin-top: 1.5rem;
+      border-radius: 8px;
+      color: #0f172a;
+    }
+
+    footer {
+      background: linear-gradient(180deg, #020617, #020617);
+      color: #e5e7eb;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 0.4rem; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.3rem; }
+      h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <strong data-i18n="title">Le Souffle du Futur</strong>
+    <div>
+      <a href="#accueil" data-i18n="nav_home">Accueil</a>
+      <a href="#probleme" data-i18n="nav_problem">Problème</a>
+      <a href="#solution" data-i18n="nav_solution">Solution</a>
+      <a href="#fonctionnement" data-i18n="nav_how">Fonctionnement</a>
+      <a href="#resultats" data-i18n="nav_results">Résultats</a>
+      <a href="#impact" data-i18n="nav_impact">Impact</a>
+      <a href="#equipe" data-i18n="nav_team">Équipe</a>
+      <span style="margin-left:1rem;">
+        <button onclick="setLang('fr')">FR</button>
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('es')">ES</button>
+      </span>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="accueil">
+  <div style="margin:auto; max-width:800px;">
+    <h1 data-i18n="hero_title">Le Souffle du Futur</h1>
+    <p data-i18n="hero_subtitle">Transformer le vent des voitures en énergie propre et renouvelable</p>
+    <a href="#probleme" class="btn" data-i18n="hero_btn">Découvrir le projet</a>
+  </div>
+</section>
+
+<section id="probleme">
+  <h2 data-i18n="problem_title">Problème & Motivation</h2>
+  <p data-i18n="problem_text">
+    Chaque jour, des millions de véhicules génèrent d’importantes quantités de vent le long des autoroutes.
+    Cette énergie cinétique est totalement perdue. Dans un contexte de transition énergétique et de lutte
+    contre les changements climatiques, il est essentiel de repenser nos infrastructures pour capter
+    cette énergie inutilisée.
+  </p>
+</section>
+
+<section id="solution">
+  <h2 data-i18n="solution_title">Notre solution</h2>
+  <div class="grid">
+    <div class="card">
+      <h3 data-i18n="sol_card1_title">Turbine Savonius</h3>
+      <p data-i18n="sol_card1_text">
+        Une turbine éolienne à axe vertical, simple et robuste, capable de tourner avec des vents
+        multidirectionnels générés par les voitures.
+      </p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="sol_card2_title">Installation routière</h3>
+      <p data-i18n="sol_card2_text">
+        Les turbines sont placées le long des autoroutes, sans interférer avec la circulation,
+        et exploitent un vent déjà existant.
+      </p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="sol_card3_title">Énergie propre</h3>
+      <p data-i18n="sol_card3_text">
+        Production d’électricité locale, sans émissions de CO₂, pour alimenter éclairage,
+        capteurs ou infrastructures intelligentes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="fonctionnement">
+  <h2><span data-i18n="how_title">Comment ça fonctionne</span></h2>
+  <ol>
+    <li><li data-i18n="how_1">Le passage des voitures crée des flux d’air puissants.</li></li>
+    <li><li data-i18n="how_2">Le vent fait tourner les pales de la turbine Savonius.</li></li>
+    <li><li data-i18n="how_3">La rotation entraîne un générateur électrique.</li></li>
+    <li><li data-i18n="how_4">L’énergie produite est stockée ou utilisée localement.</li></li>
+  </ol>
+  <p><em><p data-i18n="how_visual">Suggestion visuelle : schéma expliquant le flux d’air et la conversion mécanique → électrique.</p></em></p>
+</section>
+
+<section id="resultats">
+  <h2 data-i18n="results_title">Résultats & Données</h2>
+  <p data-i18n="results_text">
+    Les premiers tests montrent qu’une turbine peut produire de l’électricité de manière continue
+    grâce au trafic routier. Les données recueillies permettent d’estimer un fort potentiel
+    d’optimisation à plus grande échelle.
+  </p>
+  <p><em data-i18n="results_visual">Suggestion : graphique simple montrant la production en fonction du trafic.</em></p>
+</section>
+
+<section id="impact">
+  <h2 data-i18n="impact_title">Impact & Vision future</h2>
+  <p data-i18n="impact_text">
+    Le Souffle du Futur s’inscrit dans la vision des villes intelligentes : transformer les routes
+    en sources d’énergie, réduire l’empreinte carbone et sensibiliser à l’innovation durable.
+  </p>
+</section>
+
+<section id="equipe">
+  <h2 data-i18n="team_title">L’équipe</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Rafael Alexander Gutierrez Ruiz</h3>
+      <p data-i18n="team_rafael">
+        Co-fondateur du projet. Passionné par les énergies renouvelables, l’ingénierie et
+        l’innovation scientifique.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Malik Mantville</h3>
+      <p data-i18n="team_malik">
+        Co-fondateur du projet. Motivé par la recherche de solutions concrètes aux défis
+        environnementaux actuels.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 – Le Souffle du Futur | Projet scientifique étudiant</p>
+  <p>
+    Réseaux : <a href="#">Instagram</a> | <a href="#">YouTube</a>
+  </p>
+</footer>
+
+<script>
+const translations = {
+  fr: {
+    title: "Le Souffle du Futur",
+    nav_home: "Accueil",
+    nav_problem: "Problème",
+    nav_solution: "Solution",
+    nav_how: "Fonctionnement",
+    nav_results: "Résultats",
+    nav_impact: "Impact",
+    nav_team: "Équipe",
+    hero_title: "Le Souffle du Futur",
+    hero_subtitle: "Transformer le vent des voitures en énergie propre et renouvelable",
+    hero_btn: "Découvrir le projet",
+    problem_title: "Problème & Motivation",
+    problem_text: "Chaque jour, des millions de véhicules génèrent d’importantes quantités de vent le long des autoroutes. Cette énergie cinétique est totalement perdue. Dans un contexte de transition énergétique et de lutte contre les changements climatiques, il est essentiel de repenser nos infrastructures pour capter cette énergie inutilisée.",
+    solution_title: "Notre solution",
+    sol_card1_title: "Turbine Savonius",
+    sol_card1_text: "Une turbine éolienne à axe vertical, simple et robuste, capable de tourner avec des vents multidirectionnels générés par les voitures.",
+    sol_card2_title: "Installation routière",
+    sol_card2_text: "Les turbines sont placées le long des autoroutes, sans interférer avec la circulation, et exploitent un vent déjà existant.",
+    sol_card3_title: "Énergie propre",
+    sol_card3_text: "Production d’électricité locale, sans émissions de CO₂, pour alimenter éclairage, capteurs ou infrastructures intelligentes.",
+    how_title: "Comment ça fonctionne",
+    how_1: "Le passage des voitures crée des flux d’air puissants.",
+    how_2: "Le vent fait tourner les pales de la turbine Savonius.",
+    how_3: "La rotation entraîne un générateur électrique.",
+    how_4: "L’énergie produite est stockée ou utilisée localement.",
+    how_visual: "Suggestion visuelle : schéma expliquant le flux d’air et la conversion mécanique → électrique.",
+    results_title: "Résultats & Données",
+    results_text: "Les premiers tests montrent qu’une turbine peut produire de l’électricité de manière continue grâce au trafic routier. Les données recueillies permettent d’estimer un fort potentiel d’optimisation à plus grande échelle.",
+    results_visual: "Suggestion : graphique simple montrant la production en fonction du trafic.",
+    impact_title: "Impact & Vision future",
+    impact_text: "Le Souffle du Futur s’inscrit dans la vision des villes intelligentes : transformer les routes en sources d’énergie, réduire l’empreinte carbone et sensibiliser à l’innovation durable.",
+    team_title: "L’équipe",
+    team_rafael: "Co-fondateur du projet. Passionné par les énergies renouvelables, l’ingénierie et l’innovation scientifique.",
+    team_malik: "Co-fondateur du projet. Motivé par la recherche de solutions concrètes aux défis environnementaux actuels."
+  },
+  en: {
+    title: "The Breath of the Future",
+    nav_home: "Home",
+    nav_problem: "Problem",
+    nav_solution: "Solution",
+    nav_how: "How It Works",
+    nav_results: "Results",
+    nav_impact: "Impact",
+    nav_team: "Team",
+    hero_title: "The Breath of the Future",
+    hero_subtitle: "Turning vehicle-generated wind into clean energy",
+    hero_btn: "Discover the project",
+    problem_title: "Problem & Motivation",
+    problem_text: "Every day, millions of vehicles generate large amounts of wind along highways. This kinetic energy is completely wasted. In the context of energy transition and climate change, it is essential to rethink infrastructure to capture this unused energy.",
+    solution_title: "Our Solution",
+    sol_card1_title: "Savonius Turbine",
+    sol_card1_text: "A simple and robust vertical-axis wind turbine capable of rotating with multidirectional winds generated by vehicles.",
+    sol_card2_title: "Roadside Installation",
+    sol_card2_text: "Turbines installed along highways without interfering with traffic, using already existing wind.",
+    sol_card3_title: "Clean Energy",
+    sol_card3_text: "Local electricity production with zero CO₂ emissions to power lighting, sensors, or smart infrastructure.",
+    how_title: "How It Works",
+    how_1: "Passing vehicles create powerful airflows.",
+    how_2: "The wind rotates the Savonius turbine blades.",
+    how_3: "The rotation drives an electrical generator.",
+    how_4: "The produced energy is stored or used locally.",
+    how_visual: "Visual suggestion: diagram showing airflow and mechanical-to-electrical energy conversion.",
+    results_title: "Results & Data",
+    results_text: "Initial tests show that a turbine can continuously produce electricity thanks to road traffic. The collected data suggests strong potential for large-scale optimization.",
+    results_visual: "Suggestion: simple graph showing production as a function of traffic.",
+    impact_title: "Impact & Future Vision",
+    impact_text: "The Breath of the Future aligns with smart city initiatives: transforming roads into energy sources, reducing carbon footprint, and promoting sustainable innovation.",
+    team_title: "Team",
+    team_rafael: "Project co-founder. Passionate about renewable energy, engineering, and scientific innovation.",
+    team_malik: "Project co-founder. Motivated by finding concrete solutions to current environmental challenges."
+  },
+  es: {
+    title: "El Aliento del Futuro",
+    nav_home: "Inicio",
+    nav_problem: "Problema",
+    nav_solution: "Solución",
+    nav_how: "Cómo funciona",
+    nav_results: "Resultados",
+    nav_impact: "Impacto",
+    nav_team: "Equipo",
+    hero_title: "El Aliento del Futuro",
+    hero_subtitle: "Transformar el viento de los autos en energía limpia",
+    hero_btn: "Descubrir el proyecto",
+    problem_title: "Problema y motivación",
+    problem_text: "Cada día, millones de vehículos generan grandes cantidades de viento a lo largo de las autopistas. Esta energía cinética se pierde por completo. En el contexto de la transición energética y el cambio climático, es esencial repensar nuestras infraestructuras para capturar esta energía no utilizada.",
+    solution_title: "Nuestra solución",
+    sol_card1_title: "Turbina Savonius",
+    sol_card1_text: "Una turbina eólica de eje vertical, simple y robusta, capaz de girar con vientos multidireccionales generados por los vehículos.",
+    sol_card2_title: "Instalación vial",
+    sol_card2_text: "Las turbinas se instalan a lo largo de las autopistas sin interferir con el tráfico, aprovechando un viento ya existente.",
+    sol_card3_title: "Energía limpia",
+    sol_card3_text: "Producción local de electricidad sin emisiones de CO₂ para alimentar iluminación, sensores o infraestructuras inteligentes.",
+    how_title: "Cómo funciona",
+    how_1: "El paso de los vehículos genera potentes flujos de aire.",
+    how_2: "El viento hace girar las palas de la turbina Savonius.",
+    how_3: "La rotación acciona un generador eléctrico.",
+    how_4: "La energía producida se almacena o se utiliza localmente.",
+    how_visual: "Sugerencia visual: esquema que explique el flujo de aire y la conversión mecánica → eléctrica.",
+    results_title: "Resultados y datos",
+    results_text: "Las primeras pruebas muestran que una turbina puede producir electricidad de forma continua gracias al tráfico vial. Los datos recogidos indican un gran potencial de optimización a gran escala.",
+    results_visual: "Sugerencia: gráfico simple que muestre la producción según el tráfico.",
+    impact_title: "Impacto y visión futura",
+    impact_text: "El Aliento del Futuro se integra en la visión de las ciudades inteligentes: transformar carreteras en fuentes de energía, reducir la huella de carbono y promover la innovación sostenible.",
+    team_title: "Equipo",
+    team_rafael: "Cofundador del proyecto. Apasionado por las energías renovables, la ingeniería y la innovación científica.",
+    team_malik: "Cofundador del proyecto. Motivado por la búsqueda de soluciones concretas a los desafíos ambientales actuales."
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem('lang') || 'fr';
+  setLang(savedLang);
+});
+</script>
+
+</body>
+</html>
