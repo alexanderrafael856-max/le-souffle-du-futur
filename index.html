@@ -15,6 +15,7 @@
       --cyan: #22d3ee;
       --gray: #94a3b8;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
@@ -23,6 +24,7 @@
       line-height: 1.7;
       scroll-behavior: smooth;
     }
+
     header {
       position: fixed;
       top: 0;
@@ -33,6 +35,7 @@
       z-index: 1000;
       border-bottom: 1px solid rgba(148,163,184,0.15);
     }
+
     nav {
       max-width: 1200px;
       margin: auto;
@@ -41,6 +44,7 @@
       align-items: center;
       padding: 1rem 1.5rem;
     }
+
     nav a {
       color: white;
       margin-left: 1.2rem;
@@ -55,6 +59,7 @@
       max-width: 1100px;
       margin: auto;
     }
+
     .hero {
       min-height: 100vh;
       background:
@@ -77,6 +82,7 @@
       margin-bottom: 2.5rem;
       color: #e5e7eb;
     }
+
     .btn {
       background: linear-gradient(135deg, var(--cyan), var(--purple));
       color: white;
@@ -89,10 +95,6 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 20px 50px rgba(124,58,237,0.45);
-    }
-    .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 15px 40px rgba(34,197,94,0.45);
     }
@@ -102,15 +104,7 @@
       margin-bottom: 1.2rem;
       color: var(--dark);
       letter-spacing: -0.8px;
-    }
-    h2::after {
-      content: "";
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--cyan), var(--purple));
-      margin-top: 0.7rem;
-      border-radius: 4px;
+      position: relative;
     }
     h2::after {
       content: "";
@@ -137,21 +131,15 @@
       border: 1px solid rgba(148,163,184,0.25);
     }
     .card:hover {
-      transform: translateY(-10px) scale(1.02);
+      transform: translateY(-6px) scale(1.02);
       box-shadow: 0 40px 80px rgba(124,58,237,0.25);
     }
     .card h3 {
       margin-bottom: 0.6rem;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       background: linear-gradient(90deg, var(--purple), var(--cyan));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-    .card:hover { transform: translateY(-6px); }
-    .card h3 {
-      margin-bottom: 0.6rem;
-      color: var(--green);
-      font-size: 1.2rem;
     }
 
     ol {
@@ -179,6 +167,17 @@
       text-align: center;
     }
     footer a { color: var(--accent); text-decoration: none; margin: 0 0.4rem; }
+
+    /* Animación turbina */
+    .turbine {
+      transform-origin: 50% 50%;
+      animation: spin 2s linear infinite;
+      margin-top: 1rem;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.3rem; }
@@ -255,13 +254,23 @@
 
 <section id="fonctionnement">
   <h2><span data-i18n="how_title">Comment ça fonctionne</span></h2>
-  <ol>
-    <li><li data-i18n="how_1">Le passage des voitures crée des flux d’air puissants.</li></li>
-    <li><li data-i18n="how_2">Le vent fait tourner les pales de la turbine Savonius.</li></li>
-    <li><li data-i18n="how_3">La rotation entraîne un générateur électrique.</li></li>
-    <li><li data-i18n="how_4">L’énergie produite est stockée ou utilisée localement.</li></li>
-  </ol>
-  <p><em><p data-i18n="how_visual">Suggestion visuelle : schéma expliquant le flux d’air et la conversion mécanique → électrique.</p></em></p>
+  <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+    <ol>
+      <li data-i18n="how_1">Le passage des voitures crée des flux d’air puissants.</li>
+      <li data-i18n="how_2">Le vent fait tourner les pales de la turbine Savonius.</li>
+      <li data-i18n="how_3">La rotation entraîne un générateur électrique.</li>
+      <li data-i18n="how_4">L’énergie produite est stockée ou utilisée localement.</li>
+    </ol>
+
+    <!-- Turbina animada -->
+    <svg class="turbine" viewBox="0 0 100 100" width="120" height="120">
+      <circle cx="50" cy="50" r="8" fill="#7c3aed"/>
+      <rect x="48" y="0" width="4" height="40" fill="#38bdf8"/>
+      <rect x="48" y="60" width="4" height="40" fill="#38bdf8"/>
+      <rect x="0" y="48" width="40" height="4" fill="#22f3a6"/>
+      <rect x="60" y="48" width="40" height="4" fill="#22f3a6"/>
+    </svg>
+  </div>
 </section>
 
 <section id="resultats">
@@ -372,11 +381,12 @@ const translations = {
     how_1: "Passing vehicles create powerful airflows.",
     how_2: "The wind rotates the Savonius turbine blades.",
     how_3: "The rotation drives an electrical generator.",
-    how_4: "The produced energy is stored or used locally.",
+    how_4: "The produced_energy is stored or used locally.",
+        how_4: "The produced energy is stored or used locally.",
     how_visual: "",
     results_title: "Results & Data",
     results_text: "Initial tests show that a turbine can continuously produce electricity thanks to road traffic. The collected data suggests strong potential for large-scale optimization.",
-    results_visual: ".",
+    results_visual: "",
     impact_title: "Impact & Future Vision",
     impact_text: "The Breath of the Future aligns with smart city initiatives: transforming roads into energy sources, reducing carbon footprint, and promoting sustainable innovation.",
     team_title: "Team",
@@ -440,3 +450,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
