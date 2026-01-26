@@ -142,6 +142,23 @@
       -webkit-text-fill-color: transparent;
     }
 
+    /* Estilos para la foto del equipo */
+    .team-photo-container {
+      text-align: center;
+      margin: 2rem 0 3rem 0;
+    }
+    .team-photo {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(2,6,23,0.3);
+      border: 5px solid white;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .team-photo:hover {
+      transform: scale(1.02);
+    }
+
     ol {
       margin-top: 1.5rem;
       padding-left: 1.2rem;
@@ -149,15 +166,6 @@
     ol li {
       margin-bottom: 0.8rem;
       color: #1e293b;
-    }
-
-    .highlight {
-      background: #ecfeff;
-      border-left: 4px solid var(--accent);
-      padding: 1rem 1.2rem;
-      margin-top: 1.5rem;
-      border-radius: 8px;
-      color: #0f172a;
     }
 
     footer {
@@ -168,7 +176,6 @@
     }
     footer a { color: var(--accent); text-decoration: none; margin: 0 0.4rem; }
 
-    /* Animación turbina */
     .turbine {
       transform-origin: 50% 50%;
       animation: spin 2s linear infinite;
@@ -221,7 +228,7 @@
     Chaque jour, des millions de véhicules génèrent d’importantes quantités de vent le long des autoroutes.
     Cette énergie cinétique est totalement perdue. Dans un contexte de transition énergétique et de lutte
     contre les changements climatiques, il est essentiel de repenser nos infrastructures pour capter
-    cette énergie inutilisée.
+    esta energía no utilizada.
   </p>
 </section>
 
@@ -262,7 +269,6 @@
       <li data-i18n="how_4">L’énergie produite est stockée ou utilisée localement.</li>
     </ol>
 
-    <!-- Turbina animada -->
     <svg class="turbine" viewBox="0 0 100 100" width="120" height="120">
       <circle cx="50" cy="50" r="8" fill="#7c3aed"/>
       <rect x="48" y="0" width="4" height="40" fill="#38bdf8"/>
@@ -280,7 +286,6 @@
     grâce au trafic routier. Les données recueillies permettent d’estimer un fort potentiel
     d’optimisation à plus grande échelle.
   </p>
-  <p><em data-i18n="results_visual">.</em></p>
 </section>
 
 <section id="impact">
@@ -293,6 +298,13 @@
 
 <section id="equipe">
   <h2 data-i18n="team_title">L’équipe</h2>
+  
+  <div class="team-photo-container">
+    <img src="Malik Mantville et Rafael Alexander Gutierrez Ruiz.jpg" 
+         alt="Malik Mantville et Rafael Alexander Gutierrez Ruiz" 
+         class="team-photo">
+  </div>
+
   <div class="grid">
     <div class="card">
       <h3>Rafael Alexander Gutierrez Ruiz</h3>
@@ -346,10 +358,8 @@ const translations = {
     how_2: "Le vent fait tourner les pales de la turbine Savonius.",
     how_3: "La rotation entraîne un générateur électrique.",
     how_4: "L’énergie produite est stockée ou utilisée localement.",
-    how_visual: "",
     results_title: "Résultats & Données",
     results_text: "Les premiers tests montrent qu’une turbine peut produire de l’électricité de manière continue grâce au trafic routier. Les données recueillies permettent d’estimer un fort potentiel d’optimisation à plus grande échelle.",
-    results_visual: "",
     impact_title: "Impact & Vision future",
     impact_text: "Le Souffle du Futur s’inscrit dans la vision des villes intelligentes : transformer les routes en sources d’énergie, réduire l’empreinte carbone et sensibiliser à l’innovation durable.",
     team_title: "L’équipe",
@@ -381,12 +391,9 @@ const translations = {
     how_1: "Passing vehicles create powerful airflows.",
     how_2: "The wind rotates the Savonius turbine blades.",
     how_3: "The rotation drives an electrical generator.",
-    how_4: "The produced_energy is stored or used locally.",
-        how_4: "The produced energy is stored or used locally.",
-    how_visual: "",
+    how_4: "The produced energy is stored or used locally.",
     results_title: "Results & Data",
     results_text: "Initial tests show that a turbine can continuously produce electricity thanks to road traffic. The collected data suggests strong potential for large-scale optimization.",
-    results_visual: "",
     impact_title: "Impact & Future Vision",
     impact_text: "The Breath of the Future aligns with smart city initiatives: transforming roads into energy sources, reducing carbon footprint, and promoting sustainable innovation.",
     team_title: "Team",
@@ -419,10 +426,8 @@ const translations = {
     how_2: "El viento hace girar las palas de la turbina Savonius.",
     how_3: "La rotación acciona un generador eléctrico.",
     how_4: "La energía producida se almacena o se utiliza localmente.",
-    how_visual: "Sugerencia visual: esquema que explique el flujo de aire y la conversión mecánica → eléctrica.",
     results_title: "Resultados y datos",
     results_text: "Las primeras pruebas muestran que una turbina puede producir electricidad de forma continua gracias al tráfico vial. Los datos recogidos indican un gran potencial de optimización a gran escala.",
-    results_visual: "",
     impact_title: "Impacto y visión futura",
     impact_text: "El Aliento del Futuro se integra en la visión de las ciudades inteligentes: transformar carreteras en fuentes de energía, reducir la huella de carbono y promover la innovación sostenible.",
     team_title: "Equipo",
@@ -450,4 +455,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
-
